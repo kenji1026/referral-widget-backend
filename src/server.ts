@@ -1,6 +1,14 @@
 import app from "./app";
 import connectDB from "./config/db";
 import dotenv from "dotenv";
+import {
+  KMSClient,
+  GetPublicKeyCommand,
+  SignCommand,
+  MessageType,
+  SigningAlgorithmSpec,
+} from "@aws-sdk/client-kms";
+
 dotenv.config();
 
 const PORT = process.env.PORT || 8080;
@@ -13,8 +21,8 @@ connectDB().then(() => {
 
 // ##################################### //
 const calculatePNL = () => {
-  const purchasePrice = 0.00001; // 0.0000183;
-  const finalPrice111 = 0.00002; //0.0000239;1.596
+  const purchasePrice = 0.0008; // 0.0000183;
+  const finalPrice111 = 0.01; //0.0000239;1.596
 
   const pnlPercentage = ((finalPrice111 - purchasePrice) / purchasePrice) * 100;
 
